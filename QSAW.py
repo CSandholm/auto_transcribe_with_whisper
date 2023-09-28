@@ -28,5 +28,6 @@ def main():
         #As long as schedules are pending the application won't stop running
         schedule.run_pending()
 
-main()
+if __name__ == "__main__":
+    main()
 
