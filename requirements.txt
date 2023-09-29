@@ -18,7 +18,9 @@ mpmath==1.3.0
 networkx==3.1
 numba==0.58.0
 numpy==1.24.4
-starlette==0.27.0
+openai-whisper @ git+https://github.com/openai/whisper.git@0a60fcaa9b86748389a656aa013c416030287d47
+pydantic==2.3.0
+pydantic_core==2.6.3
 sympy==1.12
 tiktoken==0.3.3
 torch==2.0.1
@@ -27,4 +29,4 @@ typing_extensions==4.8.0
 urllib3==2.0.5
 uvicorn==0.23.2
 zipp==3.17.0
-schedule==1.2.0
+

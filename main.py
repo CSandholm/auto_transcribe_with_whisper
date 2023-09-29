@@ -1,7 +1,6 @@
 import schedule
-
-from procedures import transcribe_audio
-from Logger import logger
+from procedures import Transcribe_Audio_Procedure
+from Config_Logger import logger
 
 def main():
 
@@ -11,15 +10,17 @@ def main():
             key, value = line.strip().split(' = ')
             config[key] = value
 
-    path = config.get("path_to_customer_folders")
+    path_to_customer_folders = config.get("path_to_customer_folders")
+    model_name = config.get("model_name")
 
     #Call logger configuration
     logger.config_logger()
 
-    transcribe_audio(path)
+    transcribe = Transcribe_Audio_Procedure(model_name, path_to_customer_folders)
+    transcribe.transcribe_audio()
 
     #Check for audio files in path directory every 5 minutes.
-    schedule.every(5).minutes.do(transcribe_audio, path)
+    schedule.every(5).minutes.do(transcribe.transcribe_audio)
 
     #Start writing logs in a new logging file
     schedule.every().day.at("00:00").do(logger.config_logger)
@@ -30,4 +31,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

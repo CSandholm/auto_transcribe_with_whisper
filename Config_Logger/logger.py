@@ -13,7 +13,7 @@ def config_logger():
 
         #Load logger configurations
         config = {}
-        with open("Logger/config_logger.txt", "r") as cf:
+        with open("Config_Logger/config_logger.txt", "r") as cf:
             for line in cf:
                 key, value = line.strip().split(" = ")
                 config[key] = value
