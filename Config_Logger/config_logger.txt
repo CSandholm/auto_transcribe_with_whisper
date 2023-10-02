@@ -1,2 +1,0 @@
-log_dir = Logs
-app_name = QSAW
