@@ -11,7 +11,6 @@ def main():
     with open("config.json", "r") as f:
         config = json.load(f)
 
-
     #Call logger configuration
     logger.config_logger()
     print("Start application")
@@ -29,11 +28,12 @@ def main():
     transcribe.transcribe_audio()
     print("Schedule timer")
     #Check for audio files in path directory every 5 minutes.
-    schedule.every(transcribe_timer).minutes.do(transcribe.transcribe_audio)
+    schedule.every(transcribe_timer).minutes.do(transcribe.transcribe_check)
     print("Schedule log rotation")
     #Start writing logs in a new logging file
     schedule.every().day.at(log_reset_time).do(logger.config_logger)
     print("Initiate schedule to run")
+
     while True:
         #As long as schedules are pending the application won't stop running
         schedule.run_pending()
