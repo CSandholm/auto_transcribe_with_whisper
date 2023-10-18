@@ -15,7 +15,6 @@ class TranscribeAudioProcedure:
         self.valid_audio_sources = ["mp3", "mp4", "mpeg", "mpga", "m4a", "wav", "webm"]
         logging.info("/Transcribe Audio Procedure __Init__")
 
-
     def transcribe_audio(self):
 
         self.isRunning = True
@@ -26,7 +25,7 @@ class TranscribeAudioProcedure:
             if 'directory' in dirs:
                 dirs.remove('directory')
             if '.ipynb_checkpoints' in dirs:
-                dirs.remove('.ipynb_checkpoints') #Exclusive for test in jupyter notebook/lab
+                dirs.remove('.ipynb_checkpoints')  # Exclusive for test in jupyter notebook/lab
             if 'archive' in dirs:
                 dirs.remove('archive')
             for filename in files:
@@ -36,7 +35,7 @@ class TranscribeAudioProcedure:
                     current_dir = os.getcwd()
                     logging.info(f"Found file {current_dir}/{filename}")
                     file_path = os.path.join(root, filename)
-                    new_file_name = "/transcribed_" + filename.rsplit(".",1)[0]
+                    new_file_name = "/transcribed_" + filename.rsplit(".", 1)[0]
 
                     # Check if a transcribed .txt file already exists. Continue if it does.
                     if os.path.exists(f"{root}{new_file_name}.txt"):
@@ -54,7 +53,7 @@ class TranscribeAudioProcedure:
                             with open(root+new_file_name + ".txt", "w") as f:
                                 f.write(result)
                                 f.close()
-                            #Create an archive folder if it does not exist
+                            # Create an archive folder if it does not exist
                             if os.path.exists(f"{root}/archive") is False:
                                 os.makedirs(f"{root}/archive")
                                 logging.info(f"Created new archive directory in: {root}")
@@ -85,9 +84,10 @@ class TranscribeAudioProcedure:
         # make log-Mel spectrogram and move to the same device as the model
         mel = whisper.log_mel_spectrogram(audio).to(self.model.device)
 
+        # might want to implement this at some time
         # detect the spoken language
-        #_, probs = self.model.detect_language(mel)
-        #logging.info(f"Detected language: {max(probs, key=probs.get)}")
+        # _, probs = self.model.detect_language(mel)
+        # logging.info(f"Detected language: {max(probs, key=probs.get)}")
 
         # decode the audio
         options = whisper.DecodingOptions(fp16=False, language="sv")
