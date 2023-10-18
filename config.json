@@ -1,6 +1,6 @@
 {
  "path_to_customer_folders": "C:/Users/CharlesSandholm/Documents/Charles Sandholm/Jupyter/S2TApplication/testfolder",
- "model_name": "tiny",
- "transcribe_timer": "1",
+ "model_name": "medium",
+ "transcribe_timer": "5",
  "log_reset_time": "00:00"
 }

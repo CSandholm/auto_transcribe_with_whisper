@@ -1,7 +1,7 @@
 import json
 import schedule
 
-from procedures import Transcribe_Audio_Procedure
+from procedures import TranscribeAudioProcedure
 from Config_Logger import logger
 from Config_Logger.logger import logging
 from priority_handler import set_priority
@@ -24,7 +24,7 @@ def main():
     logging.info("Check folder")
     logging.info(f"{path_to_customer_folders}")
     print("Start transcribe procedure")
-    transcribe = Transcribe_Audio_Procedure(model_name, path_to_customer_folders)
+    transcribe = TranscribeAudioProcedure(model_name, path_to_customer_folders)
     transcribe.transcribe_audio()
     print("Schedule timer")
     #Check for audio files in path directory every 5 minutes.
