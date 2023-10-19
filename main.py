@@ -17,6 +17,7 @@ def main():
     print("Start application")
     logging.info("Assigning config variables")
     path_to_customer_folders = config.get("path_to_customer_folders")
+    path_to_models_folder = config.get("path_to_models_folder")
     model_name = config.get("model_name")
     transcribe_timer = int(config.get("transcribe_timer"))
     log_reset_time = config.get("log_reset_time")
@@ -25,7 +26,7 @@ def main():
     logging.info("Check folder")
     logging.info(f"{path_to_customer_folders}")
     print("Start transcribe procedure")
-    transcribe = TranscribeAudioProcedure(model_name, path_to_customer_folders)
+    transcribe = TranscribeAudioProcedure(model_name, path_to_customer_folders, path_to_models_folder)
     transcribe.transcribe_audio()
     print("Schedule timer")
     # Check for audio files in path directory every 5 minutes.
