@@ -1,5 +1,5 @@
 {
- "path_to_customer_folders": "C:/Users/CharlesSandholm/Documents/Charles Sandholm/Jupyter/S2TApplication/testfolder",
+ "path_to_customer_folders": "../jupyter/S2TApplication/testfolder",
  "path_to_models_folder": "models",
  "model_name": "tiny",
  "transcribe_timer": "5",
